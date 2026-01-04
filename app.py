@@ -1,6 +1,3 @@
-import IPython
-from google.colab import output
-
 html_code = """
 <div style="display: flex; flex-direction: column; align-items: center; font-family: 'Malgun Gothic', sans-serif;">
     <div style="display: flex; gap: 30px; margin-bottom: 15px; background: #eee; padding: 10px 30px; border-radius: 50px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);">
