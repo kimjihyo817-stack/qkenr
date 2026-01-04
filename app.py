@@ -1,13 +1,13 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-# 페이지 설정
+# 1. 페이지 설정 (IPython 관련 코드는 모두 삭제했습니다)
 st.set_page_config(page_title="오목 프로젝트", layout="centered")
 
 st.title("🎮 진로 탐구: 오목 게임 웹 앱")
 st.write("JavaScript Canvas와 Streamlit을 결합한 프로그래밍 프로젝트")
 
-# HTML/JS 코드를 변수에 담음 (문자열 충돌 방지를 위해 따옴표 처리 보정)
+# 2. HTML/JS 소스 코드
 omok_html = """
 <div id="game-container" style="display: flex; flex-direction: column; align-items: center; font-family: sans-serif;">
     <div style="display: flex; gap: 30px; margin-bottom: 15px; background: #eee; padding: 10px 30px; border-radius: 50px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);">
@@ -158,13 +158,5 @@ omok_html = """
 </script>
 """
 
-# HTML 컴포넌트 실행 (높이를 넉넉히 750 정도로 잡으세요)
-components.html(omok_html, height=750)
-
-# 사이드바 설명
-st.sidebar.title("💡 프로젝트 정보")
-st.sidebar.markdown("""
-- **주제**: 웹 기반 오목 게임 구현
-- **기술 스택**: Python, Streamlit, JS
-- **특이사항**: Canvas API를 이용한 렌더링
-""")
+# 3. Streamlit에 HTML 코드 주입 (height는 넉넉하게 800)
+components.html(omok_html, height=800)
