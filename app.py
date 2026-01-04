@@ -1,13 +1,14 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-# 페이지 설정
+# 1. 페이지 설정
 st.set_page_config(page_title="오목 프로젝트", layout="centered")
 
 st.title("🎮 진로 탐구: 오목 게임 웹 앱")
 st.write("JavaScript Canvas와 Streamlit을 결합한 프로그래밍 프로젝트")
 
-# 오목 게임 HTML/JS 소스
+# 2. 오목 게임 소스 코드 (HTML/CSS/JS)
+# f-string 충돌을 피하기 위해 단순 문자열로 정의합니다.
 omok_html = """
 <div id="game-container" style="display: flex; flex-direction: column; align-items: center; font-family: sans-serif;">
     <div style="display: flex; gap: 30px; margin-bottom: 15px; background: #eee; padding: 10px 30px; border-radius: 50px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);">
@@ -31,14 +32,14 @@ omok_html = """
     </div>
     
     <div style="position: relative;">
-        <canvas id="board" width="450" height="450" style="background: #ffce9e; border: 3px solid #444; cursor: crosshair;"></canvas>
-        <div id="win-overlay" style="display: none; position: absolute; top: 0; left: 0; width: 450px; height: 450px; background: rgba(0,0,0,0.6); flex-direction: column; justify-content: center; align-items: center; z-index: 10;">
+        <canvas id="board" width="450" height="450" style="background: #ffce9e; border: 3px solid #444; cursor: crosshair; box-shadow: 0 10px 20px rgba(0,0,0,0.2);"></canvas>
+        <div id="win-overlay" style="display: none; position: absolute; top: 0; left: 0; width: 450px; height: 450px; background: rgba(0,0,0,0.7); flex-direction: column; justify-content: center; align-items: center; z-index: 100;">
             <div id="win-text" style="color: white; font-size: 2.5em; font-weight: bold; margin-bottom: 20px; text-align: center;"></div>
             <button onclick="resetGame()" style="padding: 10px 30px; font-size: 1.2em; cursor: pointer; background: #28a745; color: white; border: none; border-radius: 5px;">다음 판 하기</button>
         </div>
     </div>
     
-    <button onclick="resetTotalScore()" style="margin-top: 20px; padding: 8px 15px; color: #666; background: #fff; border: 1px solid #ccc; cursor: pointer;">스코어 초기화</button>
+    <button onclick="resetTotalScore()" style="margin-top: 20px; padding: 8px 15px; color: #888; background: #fff; border: 1px solid #ccc; border-radius: 5px; cursor: pointer;">스코어 초기화</button>
 </div>
 
 <script>
@@ -67,6 +68,7 @@ omok_html = """
     function drawBoard() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.strokeStyle = '#444';
+        ctx.lineWidth = 1;
         for (let i = 0; i < size; i++) {
             ctx.beginPath();
             ctx.moveTo(padding, padding + i * cellSize);
@@ -158,5 +160,5 @@ omok_html = """
 </script>
 """
 
-# HTML 렌더링
-components.html(omok_html, height=800)
+# 3. 컴포넌트 실행
+components.html(omok_html, height=850)
